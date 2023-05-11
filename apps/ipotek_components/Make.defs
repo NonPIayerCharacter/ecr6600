@@ -1,0 +1,6 @@
+
+	INCPATHS += ipotek_components/led_driver/inc ipotek_components/microcoap
+	
+	VPATH += :ipotek_components/led_driver/src ipotek_components/microcoap
+	 
+	CSRCS += led_driver.c  coap.c  endpoints.c

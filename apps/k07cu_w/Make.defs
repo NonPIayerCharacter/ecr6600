@@ -1,0 +1,8 @@
+
+	INCPATHS += k07cu_w/inc 
+	INCPATHS += $(TOPDIR)/apps/ipotek_components/led_driver/inc
+	INCPATHS += $(TOPDIR)/apps/ipotek_components/microcoap
+	
+	VPATH += :k07cu_w/src
+	 
+	CSRCS += andlink_wifi_coap.c  andlink_wifi_connect.c  andlink_wifi_https.c  andlink_wifi_softap.c  ipotek_prov.c  led.c user_wifi_status.c user_main.c
