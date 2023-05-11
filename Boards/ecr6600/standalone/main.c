@@ -74,15 +74,6 @@ extern void rf_pta_config();
 #endif// CFG_WLAN_COEX
 extern int version_get(void);
 
-#include "led_driver.h"
-#include "led.h"
-#include "andlink_wifi_softap.h"
-#include "user_wifi_status.h"
-#include "system_event.h"
-#include "ipotek_prov.h"
-#include "andlink_wifi_connect.h"
-#include "sntp_tr.h"
-
 int main(void)
 {
     component_cli_init(E_UART_SELECT_BY_KCONFIG);
@@ -189,16 +180,22 @@ int main(void)
 // #ifdef CONFIG_APP_AT_COMMAND
     // AT_command_init();
 // #endif
-    set_timezone(8);
+
     extern WDT_RET_CODE creat_wdt_feed_task();
     creat_wdt_feed_task();
 
-    ipotek_prov_data_init();
+    extern void user_main(void);
+    user_main();
+    // set_timezone(8);
+    // extern WDT_RET_CODE creat_wdt_feed_task();
+    // creat_wdt_feed_task();
 
-    sys_event_loop_init(wifi_status_event, NULL);
-    //user_led_test();
+    // ipotek_prov_data_init();
 
-    andlink_softap_start();
+    // sys_event_loop_init(wifi_status_event, NULL);
+    // //user_led_test();
+
+    // andlink_softap_start();
 
     //os_psram_mem_init();
     vTaskStartScheduler();
